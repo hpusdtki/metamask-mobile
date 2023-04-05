@@ -390,6 +390,15 @@ export const migrations = {
 
     return state;
   },
+  15: (state) => {
+    if (state.engine.backgroundState.NetworkController.properties) {
+      state.engine.backgroundState.NetworkController.networkDetails =
+        state.engine.backgroundState.NetworkController.properties;
+      delete state.engine.backgroundState.NetworkController.properties;
+    }
+
+    return state;
+  },
 };
 
-export const version = 14;
+export const version = 15;
