@@ -126,6 +126,8 @@ class AccountInfoCard extends PureComponent {
      * Current selected ticker
      */
     ticker: PropTypes.string,
+    transaction: PropTypes.object,
+    activeTabUrl: PropTypes.string,
   };
 
   state = {
@@ -206,16 +208,16 @@ class AccountInfoCard extends PureComponent {
               ({address})
             </Text>
           </View>
-            <Text
-              numberOfLines={1}
-              style={[
-                styles.balanceText,
-                isHardwareKeyring ? styles.balanceTextSmall : undefined,
-              ]}
-            >
-              {strings('signature_request.balance_title')}{' '}
-              {showFiatBalance ? dollarBalance : ''} {balance}
-            </Text>        
+          <Text
+            numberOfLines={1}
+            style={[
+              styles.balanceText,
+              isHardwareKeyring ? styles.balanceTextSmall : undefined,
+            ]}
+          >
+            {strings('signature_request.balance_title')}{' '}
+            {showFiatBalance ? dollarBalance : ''} {balance}
+          </Text>
         </View>
         {isHardwareKeyring && (
           <View style={styles.tag}>
@@ -224,7 +226,7 @@ class AccountInfoCard extends PureComponent {
             </Text>
           </View>
         )}
-      </View>      
+      </View>
     );
   }
 }
