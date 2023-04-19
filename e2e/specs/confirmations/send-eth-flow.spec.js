@@ -60,8 +60,11 @@ describe('Send ETH Tests', () => {
   it('should input and validate amount', async () => {
     // Type in a non numeric value
     await AmountView.typeInTransactionAmount('0xA');
-    // Check that the amount remains 0
-    await AmountView.isTransactionAmountCorrect('0xA');
+    // Click next and check that error is shown
+    await AmountView.tapNextButton();
+    await AmountView.isAmountErrorVisible();
+    // Type in a negative value
+    await AmountView.typeInTransactionAmount('-10');
     // Click next and check that error is shown
     await AmountView.tapNextButton();
     await AmountView.isAmountErrorVisible();
