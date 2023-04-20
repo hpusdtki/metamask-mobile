@@ -5,7 +5,11 @@ import { ethErrors } from 'eth-json-rpc-errors';
 import { recoverPersonalSignature } from '@metamask/eth-sig-util';
 import RPCMethods from './index.js';
 import { RPC } from '../../constants/network';
-import { NetworksChainId, NetworkType } from '@metamask/controller-utils';
+import {
+  ApprovalType,
+  NetworksChainId,
+  NetworkType,
+} from '@metamask/controller-utils';
 import Networks, {
   blockTagParamIndex,
   getAllNetworks,
@@ -23,15 +27,6 @@ import AppConstants from '../AppConstants.js';
 const Engine = ImportedEngine as any;
 
 let appVersion = '';
-
-export enum ApprovalTypes {
-  CONNECT_ACCOUNTS = 'CONNECT_ACCOUNTS',
-  SIGN_MESSAGE = 'SIGN_MESSAGE',
-  ADD_ETHEREUM_CHAIN = 'ADD_ETHEREUM_CHAIN',
-  SWITCH_ETHEREUM_CHAIN = 'SWITCH_ETHEREUM_CHAIN',
-  REQUEST_PERMISSIONS = 'wallet_requestPermissions',
-  WALLET_CONNECT = 'WALLET_CONNECT',
-}
 
 interface RPCMethodsMiddleParameters {
   hostname: string;
@@ -285,7 +280,7 @@ export const getRpcMethodMiddleware = ({
             if (!approved) {
               // Prompts user approval UI in RootRPCMethodsUI.js.
               await requestUserApproval({
-                type: ApprovalTypes.CONNECT_ACCOUNTS,
+                type: ApprovalType.ConnectAccounts,
                 requestData: { hostname },
               });
             }
