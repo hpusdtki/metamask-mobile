@@ -108,6 +108,7 @@ export function renderSlightlyLongAddress(
  * @returns {String} - String corresponding to account name. If there is no name, returns the original short format address
  */
 export function renderAccountName(address, identities) {
+  console.log('renderAccountName Engine', Engine.context.NetworkController);
   const { NetworkController } = Engine.context;
   const network = NetworkController.state.network;
   address = safeToChecksumAddress(address);

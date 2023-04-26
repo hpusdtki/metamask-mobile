@@ -18,6 +18,9 @@ jest.mock('../../../core/Engine', () => ({
 
 const mockStore = configureMockStore();
 const initialState = {
+  settings: {
+    useBlockieIcon: false,
+  },
   engine: {
     backgroundState: {
       AccountTrackerController: {
