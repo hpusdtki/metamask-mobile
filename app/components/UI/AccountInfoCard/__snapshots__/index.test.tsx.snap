@@ -204,7 +204,7 @@ exports[`AccountInfoCard should match snapshot 1`] = `
           ]
         }
       >
-        0x0...0x0
+        0x0
       </Text>
       <Text
         numberOfLines={1}
